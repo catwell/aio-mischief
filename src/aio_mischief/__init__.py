@@ -23,6 +23,7 @@ class PyAsyncGenASend(PyObject):
 
 
 def extract_generator(async_gen_asend: Any):
+    # Original idea from mitsuhiko, adressed here: https://mcla.ug/blog/cpython-hackage.html
     async_gen = PyAsyncGenASend.from_address(id(async_gen_asend)).ags_gen
     r: dict[str, Any] = {}
     ctypes.pythonapi.PyDict_SetItem(
